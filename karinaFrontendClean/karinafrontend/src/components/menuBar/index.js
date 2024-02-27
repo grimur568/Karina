@@ -26,12 +26,12 @@ function MenuBar() {
   };
 
   return (
-    <nav className="bg-primary text-white">
+    <nav className="bg-cBlack text-white ">
       <div className="mx-auto px-4 flex justify-between items-center">
         <div className="flex space-x-4">
           {/* Logo or brand name */}
           <a href="#" className="flex items-center py-5 px-2 text-gray-200 hover:text-gray-400">
-            <span className="font-bold">Brand</span>
+            <span className="font-bold">Karína Verktakar</span>
           </a>
           {/* Primary Nav */}
           <div className="hidden md:flex items-center space-x-1">
