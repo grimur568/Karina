@@ -1,6 +1,8 @@
 import React from 'react';
-import Excavator from '../../images/grafa.webp';
+import Excavator from '../../images/grafan.png';
 import './../../index.css';
+import ContentBox from '../../components/contentBox';
+import Title from '../../components/title';
 
 const FrontPage = () => {
   return (
@@ -10,6 +12,7 @@ const FrontPage = () => {
 
       }}
     >
+      
       <div
         style={{
           display: 'flex',
@@ -19,9 +22,13 @@ const FrontPage = () => {
           color: '#fff',
         }}
       >
-
+        <div style={{ height: '1em' }} />
         {/* Display the excavator image */}
         <img src={Excavator} alt="Excavator" style={{ maxWidth: '100%', height: 'auto' }} />
+        <Title/>
+      </div>
+      <div className="bg-black h-screen">
+        <ContentBox />
       </div>
     </div>
   );

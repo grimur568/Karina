@@ -26,7 +26,7 @@ function MenuBar() {
   };
 
   return (
-    <nav className="bg-cBlack text-white ">
+    <nav className="bg-black text-white ">
       <div className="mx-auto px-4 flex justify-between items-center">
         <div className="flex space-x-4">
           {/* Logo or brand name */}

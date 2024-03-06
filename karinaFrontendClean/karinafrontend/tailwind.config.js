@@ -12,7 +12,8 @@ module.exports = {
         cDarkBlue: '#29648A',
         cYellow: '#EAC435',
         cBlack: '#2D2D2A',
-        cOlive: '#383831'
+        cOlive: '#383831',
+        aBlack: '#0d0d0d'
         // Define additional colors as needed
       },
       boxShadow: {
