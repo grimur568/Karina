@@ -1,5 +1,5 @@
 import React from 'react';
-import Excavator from '../../images/grafan.png';
+import Excavator from '../../images/Karina_Verkatar_Logo_trans.png';
 import './../../index.css';
 import ContentBox from '../../components/contentBox';
 import Title from '../../components/title';
@@ -7,7 +7,7 @@ import Title from '../../components/title';
 const FrontPage = () => {
   return (
     <div
-      className="bg-black  h-screen"
+      className="bg-white   h-screen"
       style={{
 
       }}
@@ -19,15 +19,13 @@ const FrontPage = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          color: '#fff',
+          color: 'white',
         }}
       >
-        <div style={{ height: '1em' }} />
         {/* Display the excavator image */}
-        <img src={Excavator} alt="Excavator" style={{ maxWidth: '100%', height: 'auto' }} />
-        <Title/>
+        <img className="" src={Excavator} alt="Excavator" style={{ width: '50%', height: '' }} />
       </div>
-      <div className="bg-black h-screen">
+      <div className="bg-white h-screen">
         <ContentBox />
       </div>
     </div>

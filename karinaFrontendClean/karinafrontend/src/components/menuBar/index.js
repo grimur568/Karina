@@ -31,14 +31,22 @@ function MenuBar() {
         <div className="flex space-x-4">
           {/* Logo or brand name */}
           <a href="#" className="flex items-center py-5 px-2 text-gray-200 hover:text-gray-400">
-            <span className="font-bold">Karína Verktakar</span>
+            <span className="font-bold mt-5 m">Karína Verktakar</span>
           </a>
           {/* Primary Nav */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-20 pt-7">
+            <div className="bg-black rounded-3xl p-2 px-2" >
             <a href="/" className="py-5 px-3 hover:text-gray-400">Home</a>
+            </div>
+            <div>
             <a href="/about" className="py-5 px-3 hover:text-gray-400">About</a>
+            </div>
+            <div>
             <a href="#" className="py-5 px-3 hover:text-gray-400">Services</a>
+            </div>
+            <div>
             <a href="#" className="py-5 px-3 hover:text-gray-400">Contact</a>
+            </div>
           </div>
         </div>
         
