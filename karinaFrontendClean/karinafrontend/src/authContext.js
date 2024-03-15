@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         // Check for token in sessionStorage or any logic to ascertain login status
-        const token = localStorage.getItem('jwtToken');
+        const token = sessionStorage.getItem('jwtToken');
         setIsLoggedIn(!!token);
     }, []);
 

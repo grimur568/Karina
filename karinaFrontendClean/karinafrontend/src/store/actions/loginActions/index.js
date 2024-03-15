@@ -10,7 +10,7 @@ import axios from "axios";
   
   export const loginSuccess = (token) => {
     // Save token to sessionStorage
-    localStorage.setItem('jwtToken', token);
+    sessionStorage.setItem('jwtToken', token);
     console.log('token', token)
     return {
       type: LOGIN_SUCCESS,
@@ -41,7 +41,7 @@ export const login = (username, password) => async (dispatch) => {
 
   export const logout = () => {
     
-    localStorage.removeItem('jwtToken'); // Remove the JWT token from sessionStorage
+    sessionStorage.removeItem('jwtToken'); // Remove the JWT token from sessionStorage
     return {
       type: LOGOUT
     };

@@ -9,7 +9,7 @@ export const POST_COMPANY_FAILURE = 'POST_COMPANY_FAILURE';
 
 const axiosWithAuth = () => {
   // Retrieve the token from sessionStorage
-  const token = localStorage.getItem('jwtToken');
+  const token = sessionStorage.getItem('jwtToken');
 
   // Create a new instance of axios
   const instance = axios.create({

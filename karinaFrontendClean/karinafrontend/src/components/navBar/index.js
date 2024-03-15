@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../authContext';
 import { useSelector } from 'react-redux';
+import NavBarLogo from '../../images/logo/NavBarLogo.png';
 
 function MenuBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +13,13 @@ function MenuBar() {
   const isAuthenticated = useSelector((state) => state.loginStateSlice.token);
   // Check login state based on 'jwtToken' in sessionStorage
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken');
+    const token = sessionStorage.getItem('jwtToken');
+    console.log("auth",isAuthenticated)
     setIsLoggedIn(!!token); // Convert truthy/falsy value to boolean
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('jwtToken');
     setIsLoggedIn(false);
     window.location.reload();
     navigate('/');
@@ -26,29 +28,29 @@ function MenuBar() {
   };
 
   return (
-    <nav className="bg-black text-white ">
-      <div className="mx-auto px-4 flex justify-between items-center">
-        <div className="flex space-x-4">
+    <nav className="bg-black text-black ">
+      <div className="mx-auto px-4 flex justify-between items-center bg-white">
+        <div className="flex space-x-4 ">
           {/* Logo or brand name */}
           <a href="#" className="flex items-center py-5 px-2 text-gray-200 hover:text-gray-400">
-            <span className="font-bold mt-5 m">Karína Verktakar</span>
+            <img className="size-10/12" src={NavBarLogo}/>
           </a>
+          </div>
           {/* Primary Nav */}
-          <div className="hidden md:flex items-center space-x-20 pt-7">
-            <div className="bg-black rounded-3xl p-2 px-2" >
-            <a href="/" className="py-5 px-3 hover:text-gray-400">Home</a>
+          <div className="hidden md:flex items-center space-x-40">
+            <a href="/" className="font-sans text-xl py-5 px-3 hover:text-gray-400">HEIM</a>
+       
+            <div>
+            <a href="/Service" className="font-sans text-xl py-5 px-3 hover:text-gray-400">ÞJÓNUSTA</a>
             </div>
             <div>
-            <a href="/about" className="py-5 px-3 hover:text-gray-400">About</a>
+            <a href="/Machines" className="font-sans text-xl py-5 px-3 hover:text-gray-400">TÆKJAKOSTUR</a>
             </div>
             <div>
-            <a href="#" className="py-5 px-3 hover:text-gray-400">Services</a>
-            </div>
-            <div>
-            <a href="#" className="py-5 px-3 hover:text-gray-400">Contact</a>
+            <a href="/Assignments" className="font-sans text-xl py-5 px-3 hover:text-gray-400">VERKEFNI</a>
             </div>
           </div>
-        </div>
+        
         
         {/* Login/Logout Section */}
         <div className="relative">
@@ -70,7 +72,7 @@ function MenuBar() {
               )}
             </>
           ) : (
-            <a href="/login" className="py-2 px-4 hover:bg-gray-700 transition duration-300">
+            <a href="/login" className="text-2xl py-2 px-4 hover:bg-gray-700 transition duration-300">
               Login
             </a>
           )}
