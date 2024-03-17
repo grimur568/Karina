@@ -2,29 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../authContext';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import NavBarLogo from '../../images/logo/NavBarLogo.png';
 
 function MenuBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, updateToken } = useAuth();;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  console.log(isLoggedIn); 
+  // This useSelector might be redundant if you're not using Redux state for authentication anymore
 
-  const isAuthenticated = useSelector((state) => state.loginStateSlice.token);
-  // Check login state based on 'jwtToken' in sessionStorage
-  useEffect(() => {
-    const token = sessionStorage.getItem('jwtToken');
-    console.log("auth",isAuthenticated)
-    setIsLoggedIn(!!token); // Convert truthy/falsy value to boolean
-  }, []);
 
   const handleLogout = () => {
+    updateToken(null); // Removes the token and updates auth state
     sessionStorage.removeItem('jwtToken');
-    setIsLoggedIn(false);
-    window.location.reload();
-    navigate('/');
-    
-    // Optionally, redirect user or refresh page
+    navigate('/login'); // Navigate to login after logout
   };
 
   return (
@@ -54,7 +47,7 @@ function MenuBar() {
         
         {/* Login/Logout Section */}
         <div className="relative">
-          {isAuthenticated ? (
+          {isLoggedIn ? (
             <>
               <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="py-2 px-4 hover:bg-gray-700 transition duration-300">
                 Account <svg className="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>

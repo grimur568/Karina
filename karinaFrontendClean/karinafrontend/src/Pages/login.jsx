@@ -12,8 +12,9 @@ function Login() {
   const handleSubmit = (event) => {; 
     dispatch(login(email, password));
     console.log('login');
-    console.log('jwtToken', localStorage.getItem('jwtToken'));
-    navigate('/');
+    console.log('jwtToken', sessionStorage.getItem('jwtToken'));
+    
+   
   };
 
 

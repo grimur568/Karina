@@ -22,7 +22,7 @@ const Footer = () => {
 
         {/* Enhanced Social Media Links */}
         <div className="flex justify-center md:justify-end space-x-4">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" 
+          <a href="https://www.facebook.com/profile.php?id=61556653542825" target="_blank" rel="noopener noreferrer" 
             className="flex items-center bg-blue-600 text-white rounded-full px-4 py-2 hover:bg-blue-700 transition duration-300 ease-in-out">
             <img src={facebook} alt="Facebook" className="w-6 mr-2" />
             Facebook

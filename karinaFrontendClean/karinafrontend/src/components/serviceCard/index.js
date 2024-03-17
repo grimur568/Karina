@@ -1,19 +1,51 @@
-import React from 'react';
-import volvo from '../../images/volvo.JPG';
+import React, { useState, useEffect } from 'react';
 
-const ServiceCard = () => {
-    return (
-        <div className="card shadow-lg bg-white">
-           <img src={volvo} alt="Volvo" className="card-img-top" />
-           <div className="card-body text-center m-5 ">
-                <h1 className="">Volvo</h1>
-                <p className="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+const fetchServices = async (id) => {
+  const apiUrl = 'https://localhost:7290';
+  
+  try {
+    // Fetch the service by ID
+    const serviceResponse = await fetch(`${apiUrl}/service/${id}`);
+    if (!serviceResponse.ok) throw new Error('Failed to fetch service');
+    const serviceData = await serviceResponse.json();
+    
+    // Fetch the image data for the service's image ID
+    const imageResponse = await fetch(`${apiUrl}/image/${serviceData.image}`);
+    if (!imageResponse.ok) throw new Error('Failed to fetch image');
+    const imageBlob = await imageResponse.blob();
+    const imageUrl = URL.createObjectURL(imageBlob);
+    return { ...serviceData, imageUrl };
+  } catch (error) {
+    console.error("Fetching service failed:", error);
+    return null; // Handle error as needed
+  }
+};
 
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-               
-        </div>
-        </div>
-    );
+const ServiceCard = ({ id }) => {
+  const [service, setService] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const serviceData = await fetchServices(id);
+      setService(serviceData);
+    };
+
+    fetchData();
+  }, [id]);
+
+  if (!service) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="card shadow-lg bg-white">
+      <img src={service.imageUrl} alt={service.title} className="card-img-top" />
+      <div className="card-body text-center m-5">
+        <h1>{service.title}</h1>
+        <p className="card-text">{service.description}</p>
+      </div>
+    </div>
+  );
 };
 
 export default ServiceCard;

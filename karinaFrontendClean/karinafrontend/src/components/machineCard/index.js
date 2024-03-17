@@ -18,8 +18,8 @@ const MachineCard = () => {
     } : {};
 
     return (
-        <div className="card shadow-lg bg-blue-100 flex" style={{ width: '960px', height: '240px' }}>
-            <img src={volvo} alt="Volvo" style={{ width: '50%', height: '100%', objectFit: 'cover' }} />
+        <div className="card shadow-lg bg-blue-100 flex" style={{ maxWidth: '960px', maxHeight: '240px' }}>
+            <img src={volvo} alt="Volvo" style={{ maxWidth: '50%', maxHeight: '100%', objectFit: 'cover' }} />
             <div className="card-body bg-white" style={{ width: '50%', padding: '20px', display: 'flex', flexDirection: 'column', position: 'relative' }}>
                 <h1 className='text-2xl' style={{ marginTop: '0', marginBottom: '1rem' }}>Volvo</h1>
                 <div ref={textRef} style={{

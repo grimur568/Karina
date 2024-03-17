@@ -10,7 +10,6 @@ const initialState = {
   };
   
   const loginReducer = (state = initialState, action) => {
-    console.log('inreducer')
     switch (action.type) {
       case LOGIN_REQUEST:
         return {
